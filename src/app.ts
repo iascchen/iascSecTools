@@ -17,13 +17,13 @@ app.use(bodyParser.json())
 
 // API Endpoints
 app.get('/', (req, res) => {
-    res.json({'message': 'Welcome to Phytium IT Proxy app'})
+    res.json({'entry': ['/ip', '']})
 })
 
-app.get('/status', (req, res, next) => {
+app.get('/ip', (req, res, next) => {
     console.log('req : ', req.clientIp)
-    const ip = req.clientIp
-    res.json({'message': req.headers, ip})
+    const clientIp = req.clientIp
+    res.json({clientIp, httpHeaders: req.headers, })
 })
 
 export default app
